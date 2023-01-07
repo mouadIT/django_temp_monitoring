@@ -1,0 +1,55 @@
+{% extends 'main.html'%}
+{% block cont%}
+        <p class="font-weight-bold">Table des valeurs</p>
+{% endblock%}
+{% block content %}
+<form method="post">
+    {% csrf_token %}
+    {{form}}
+   <div class="charts-card">
+
+     <div>
+         <div class="main-cards">
+
+          <div class="card">
+            <div class="card-inner">
+              <p class="text-primary">température actuelle</p>
+                <span class="material-icons-outlined" style="font-size:45px;color:#1A05DB">thermostat</span>
+            </div>
+            <span class="text-primary font-weight-bold">{{temp}}</span>
+            <span class="text-primary font-weight-bold" style="font-size:11px;">{{dt}}</span>
+          </div>
+
+          <div class="card">
+            <div class="card-inner">
+              <p class="text-primary">température maximale</p>
+              <span class="material-icons-outlined" style="font-size:45px;color:#F50736">thermostat</span>
+            </div>
+            <span class="text-primary font-weight-bold">{{stats.max}}</span>
+          </div>
+
+          <div class="card">
+            <div class="card-inner">
+              <p class="text-primary">température minimale</p>
+              <span class="material-icons-outlined" style="font-size:45px;color:#1A05DB">ac_unit</span>
+            </div>
+            <span class="text-primary font-weight-bold">{{stats.min}}</span>
+          </div>
+
+          <div class="card">
+            <div class="card-inner">
+              <p class="text-primary">température moyenne</p>
+              <span class="material-icons-outlined" style="font-size:45px;color:#09EE92">thermostat_auto</span>
+            </div>
+            <span class="text-primary font-weight-bold">{{stats.avg}}</span>
+          </div>
+
+        </div>
+         <h2 class="chart-title">Historique des valeurs</h2>
+         <div id="chart-temperature" class="container"></div>
+            {% include 'second/htmldsb.html' %}
+     </div>
+   </div>
+</form>
+{% endblock %}
+

@@ -1,0 +1,22 @@
+{% extends 'main.html'%}
+{% block cont%}
+        <p class="font-weight-bold">Acceuil</p>{{t_min}}
+{% endblock%}
+
+{%block content %}
+<form action="" method="GET">
+    {% csrf_token %}
+    {{form}}
+     <div class="charts-card">
+          <div class="btn-outline-success">
+             <a class="btn btn-sm btn-info" href="csv" style="text-decoration: none" ><span class="export">Exporter en Csv</span><span class="material-icons-outlined">file_download</span></a>
+          </div>
+          <div>
+            <h2 class="chart-title">variation de température</h2>
+            <div id="chart-temperature" class="container">
+                {% include 'acceuil/htmlchart.html' %}
+            </div>
+          </div>
+     </div>
+</form>
+{%endblock%}
